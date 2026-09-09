@@ -19,9 +19,9 @@ import com.dairy.repository.TankerRepository;
 import com.dairy.repository.VillageRepository;
 
 /**
- * Runs ONCE automatically when the app starts (CommandLineRunner).
- * Generates fake but realistic-scale data so you don't have to insert
- * 1,400 farmers by hand.
+ * Runs ONCE automatically when the app starts.
+ * Generates fake but realistic-scale data so one doesn't have to insert
+ * 1,400 farmers manually.
  */
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -34,7 +34,7 @@ public class DataLoader implements CommandLineRunner {
 
     private final Random random = new Random();
 
-    // Constructor injection - Spring automatically provides these repositories
+    // Spring automatically provides these repositories
     public DataLoader(VillageRepository villageRepository,
                        CollectionPointRepository collectionPointRepository,
                        FarmerRepository farmerRepository,
@@ -50,7 +50,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // Safety check: don't reseed if data already exists (e.g., app restarted)
+        // Avoids re-seed of data when app restarts
         if (villageRepository.count() > 0) {
             System.out.println("Seed data already exists - skipping DataLoader.");
             return;
@@ -63,25 +63,25 @@ public class DataLoader implements CommandLineRunner {
         double baseLat = 12.9716;
         double baseLng = 77.5946;
 
-        // 1. Chilling plant (just one for this demo)
+        //Chilling plant
         ChillingPlant plant = new ChillingPlant("Main Chilling Plant", baseLat, baseLng);
         chillingPlantRepository.save(plant);
 
-        // 2. Tankers - 22 of them
+        //Tankers - 22 of them
         List<Tanker> tankers = new ArrayList<>();
         for (int i = 1; i <= 22; i++) {
             Tanker tanker = new Tanker("TN-" + String.format("%03d", i), 3000.0);
             tankers.add(tankerRepository.save(tanker));
         }
 
-        // 3. Villages - 60 of them
+        //Villages - 60 of them
         List<Village> villages = new ArrayList<>();
         for (int i = 1; i <= 60; i++) {
             Village village = new Village("Village-" + i);
             villages.add(villageRepository.save(village));
         }
 
-        // 4. Collection points - a few per village, scattered around it
+        //Collection points - a few per village, scattered around it
         List<CollectionPoint> allPoints = new ArrayList<>();
         for (Village village : villages) {
             int pointsInThisVillage = 2 + random.nextInt(2); // 2 or 3 points per village
@@ -93,9 +93,9 @@ public class DataLoader implements CommandLineRunner {
             }
         }
 
-        // 5. Farmers - ~1,400 total, distributed across collection points
-        //    ~70% of points get 1 farmer, ~30% get 2 - this is what naturally
-        //    creates the "shared collection point" scenario from the brief.
+        // Farmers - ~1,400 total, distributed across collection points
+        // ~70% of points get 1 farmer, ~30% get 2 - this is what naturally
+        // creates the "shared collection point" scenario from the brief.
         int totalFarmers = 1400;
         int farmerCount = 0;
         int pointIndex = 0;

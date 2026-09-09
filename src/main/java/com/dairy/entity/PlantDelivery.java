@@ -35,41 +35,41 @@ public class PlantDelivery {
 	 public PlantDelivery() {
 	    }
 
-	    public PlantDelivery(Run run, ChillingPlant chillingPlant, LocalDateTime deliveredAt) {
+	 public PlantDelivery(Run run, ChillingPlant chillingPlant, LocalDateTime deliveredAt) {
 	        this.run = run;
 	        this.chillingPlant = chillingPlant;
 	        this.deliveredAt = deliveredAt;
-	    }
+	 }
 
-	    public Long getId() {
+	 public Long getId() {
 	        return id;
-	    }
+	 }
 
-	    public void setId(Long id) {
+	 public void setId(Long id) {
 	        this.id = id;
-	    }
+	 }
 	    
-	    public Run getRun() {
+	 public Run getRun() {
 	        return run;
-	    }
+	 }
 
-	    public void setRun(Run run) {
+	 public void setRun(Run run) {
 	        this.run = run;
-	    }
+	 }
 
-	    public ChillingPlant getChillingPlant() {
+	 public ChillingPlant getChillingPlant() {
 	        return chillingPlant;
-	    }
+	 }
 
-	    public void setChillingPlant(ChillingPlant chillingPlant) {
+	 public void setChillingPlant(ChillingPlant chillingPlant) {
 	        this.chillingPlant = chillingPlant;
-	    }
+	 }
 
-	    public LocalDateTime getDeliveredAt() {
+	 public LocalDateTime getDeliveredAt() {
 	        return deliveredAt;
-	    }
+	 }
 	    
-	    public void setDeliveredAt(LocalDateTime deliveredAt) {
+	 public void setDeliveredAt(LocalDateTime deliveredAt) {
 	        this.deliveredAt = deliveredAt;
-	    }
+	 }
 }

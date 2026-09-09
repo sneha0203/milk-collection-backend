@@ -25,7 +25,7 @@ public class Route {
     @JoinColumn(name = "tanker_id", nullable = false)
     private Tanker tanker;
 
-    // MORNING or EVENING - see RunType enum below
+    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private RunType runType;

@@ -33,11 +33,6 @@ public class SpoilageService {
      * Called once plant delivery happens for a run. For every DEPARTED stop
      * in that run, compute elapsed time from actual pickup to plant delivery,
      * and decide if it's rejected.
-     *
-     * Assumption (documented in README): each stop's milk is judged
-     * individually based on ITS OWN pickup time - not a single whole-load
-     * verdict. This is more accurate for reporting even though physically
-     * the milk gets mixed together in transit.
      */
     @Transactional
     public List<SpoilageResult> evaluateSpoilage(Long runId, LocalDateTime deliveredAt) {

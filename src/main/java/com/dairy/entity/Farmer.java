@@ -18,10 +18,24 @@ public class Farmer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+private String name;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "village_id", nullable = false)
+	private Village village;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "collection_point_id", nullable = false)
+	private CollectionPoint collectionPoint;
+	
+	@Column(nullable = false)
+	private Double avgMilkQtyLiters;
+	
+	private String phoneNumber;
+	
 	public Farmer() {
 		
 	}
-	
 	
 	public Farmer(String name, Village village, CollectionPoint collectionPoint, Double avgMilkQtyLiters
 			) {
@@ -30,9 +44,7 @@ public class Farmer {
 		this.village = village;
 		this.collectionPoint = collectionPoint;
 		this.avgMilkQtyLiters = avgMilkQtyLiters;
-		this.phoneNumber = phoneNumber;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -70,19 +82,6 @@ public class Farmer {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	private String name;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "village_id", nullable = false)
-	private Village village;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "collection_point_id", nullable = false)
-	private CollectionPoint collectionPoint;
-	
-	@Column(nullable = false)
-	private Double avgMilkQtyLiters;
-	
-	private String phoneNumber;
 
 }

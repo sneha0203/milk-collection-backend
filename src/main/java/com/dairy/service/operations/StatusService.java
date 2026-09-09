@@ -23,7 +23,7 @@ public class StatusService {
     }
 
     /**
-     * Core "where is the tanker" logic. Looks at check-in events only -
+     * Implements "where is the tanker" logic. Looks at check-in events only -
      * no GPS. Finds the last ARRIVED/DEPARTED stop and the next PENDING one.
      */
     public TankerStatusResponse getStatus(Long runId) {
@@ -66,9 +66,8 @@ public class StatusService {
             response.setNextCollectionPointId(nextPending.getRouteStop().getCollectionPoint().getId());
             response.setNextStopSequenceNo(nextPending.getRouteStop().getSequenceNo());
 
-            // Simple ETA: use the difference between planned offsets of the
-            // last confirmed stop and the next stop. Rough but reasonable
-            // without real-time GPS.
+            // Use the difference between planned offsets of the
+            // last confirmed stop and the next stop. 
             int plannedOffsetForNext = nextPending.getRouteStop().getPlannedArrivalOffsetMinutes();
             int plannedOffsetForLast = lastConfirmed != null
                     ? lastConfirmed.getRouteStop().getPlannedArrivalOffsetMinutes()
@@ -80,7 +79,6 @@ public class StatusService {
     }
 
     /**
-     * Farmer-facing: has MY milk been picked up yet, for a given run?
      * Finds the RunStop whose collection point matches the farmer's point.
      */
     public String getPickupStatusForCollectionPoint(Long runId, Long collectionPointId) {

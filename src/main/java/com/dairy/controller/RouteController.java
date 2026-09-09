@@ -19,7 +19,7 @@ public class RouteController {
         this.routeGeneratorService = routeGeneratorService;
     }
 
-    // Example: POST http://localhost:8080/routes/generate?runType=MORNING
+    
     @PostMapping("/routes/generate")
     public List<Route> generateRoutes(@RequestParam RunType runType) {
         return routeGeneratorService.generateRoutes(runType);

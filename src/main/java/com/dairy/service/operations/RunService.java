@@ -68,8 +68,7 @@ public class RunService {
 
     /**
      * Driver check-in: marks a stop as ARRIVED and records the real timestamp.
-     * This is the core "no GPS needed" mechanism - status comes from these
-     * manual events, not coordinates.
+     *  status comes from these manual events, not coordinates.
      */
     @Transactional
     public RunStop markArrived(Long runStopId) {

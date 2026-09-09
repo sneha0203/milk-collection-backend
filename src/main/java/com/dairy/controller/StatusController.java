@@ -17,13 +17,13 @@ public class StatusController {
         this.statusService = statusService;
     }
 
-    // GET /runs/{runId}/status
+    
     @GetMapping("/runs/{runId}/status")
     public TankerStatusResponse getStatus(@PathVariable Long runId) {
         return statusService.getStatus(runId);
     }
 
-    // GET /runs/{runId}/pickup-status?collectionPointId=5
+    
     @GetMapping("/runs/{runId}/pickup-status")
     public String getPickupStatus(@PathVariable Long runId, @RequestParam Long collectionPointId) {
         return statusService.getPickupStatusForCollectionPoint(runId, collectionPointId);

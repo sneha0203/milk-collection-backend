@@ -27,36 +27,30 @@ public class RunController {
         this.plantDeliveryService = plantDeliveryService;
     }
 
-//    public RunController(RunService runService) {
-//        this.runService = runService;
-//    }
-
-    // POST /runs/start?routeId=1&runDate=2026-09-09
     @PostMapping("/runs/start")
     public Run startRun(@RequestParam Long routeId,
                          @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate runDate) {
         return runService.startRun(routeId, runDate);
     }
-
-    // POST /runs/stops/{runStopId}/arrive
+ 
     @PostMapping("/runs/stops/{runStopId}/arrive")
     public RunStop markArrived(@PathVariable Long runStopId) {
         return runService.markArrived(runStopId);
     }
 
-    // POST /runs/stops/{runStopId}/depart
+    
     @PostMapping("/runs/stops/{runStopId}/depart")
     public RunStop markDeparted(@PathVariable Long runStopId) {
         return runService.markDeparted(runStopId);
     }
 
-    // POST /runs/stops/{runStopId}/skip
+    
     @PostMapping("/runs/stops/{runStopId}/skip")
     public RunStop markSkipped(@PathVariable Long runStopId) {
         return runService.markSkipped(runStopId);
     }
 
-    // POST /runs/{runId}/complete
+
     @PostMapping("/runs/{runId}/complete")
     public Run completeRun(@PathVariable Long runId) {
         return runService.completeRun(runId);

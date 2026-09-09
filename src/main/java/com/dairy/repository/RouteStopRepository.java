@@ -8,6 +8,5 @@ import com.dairy.entity.RouteStop;
 
 public interface RouteStopRepository extends JpaRepository<RouteStop, Long> {
 
-    // Ordered stops for a route - this is how you rebuild the full sequence
     List<RouteStop> findByRouteIdOrderBySequenceNoAsc(Long routeId);
 }

@@ -44,8 +44,6 @@ public class RouteGeneratorService {
 
     /**
      * Generates one Route per tanker for the given run type (MORNING/EVENING).
-     * Steps: split all collection points across tankers, order each tanker's
-     * points by nearest-neighbor, then save Route + RouteStop rows.
      */
     @Transactional
     public List<Route> generateRoutes(RunType runType) {
@@ -131,8 +129,7 @@ public class RouteGeneratorService {
     /**
      * Walks the ordered stops, accumulating travel time, and saves each as a
      * RouteStop. Also flags (via console warning) any stop whose cumulative
-     * time exceeds the spoilage threshold - a real system might reassign the
-     * stop instead; for this build we just surface the warning.
+     * time exceeds the spoilage threshold
      */
     private void saveRouteStops(Route route, List<CollectionPoint> orderedStops) {
         double cumulativeMinutes = 0;
@@ -164,8 +161,6 @@ public class RouteGeneratorService {
 
     /**
      * Simplified flat-earth distance using lat/lng degree differences.
-     * Not real geographic distance (would need Haversine formula for that),
-     * but fine for relative comparisons at this scale - documented assumption.
      */
     private double distanceKm(CollectionPoint a, CollectionPoint b) {
         double dLat = (a.getLatitude() - b.getLatitude()) * KM_PER_DEGREE;

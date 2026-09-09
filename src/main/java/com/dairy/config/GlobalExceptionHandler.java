@@ -9,13 +9,12 @@ import com.dairy.dto.ErrorResponse;
 
 /**
  * Catches exceptions thrown anywhere in controllers/services and converts
- * them into clean JSON responses with proper HTTP status codes, instead of
- * raw stack traces.
+ * them into clean JSON responses with proper HTTP status codes
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Thrown when a requested record doesn't exist (e.g., "Run not found: 99")
+    // Thrown when a requested record doesn't exist 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(IllegalArgumentException ex) {
         ErrorResponse error = new ErrorResponse(
@@ -26,7 +25,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-    // Thrown when an operation violates business rules (e.g., invalid state transition)
+    // Thrown when an operation violates business rules 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<ErrorResponse> handleBadState(IllegalStateException ex) {
         ErrorResponse error = new ErrorResponse(
