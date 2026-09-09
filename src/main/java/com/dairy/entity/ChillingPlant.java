@@ -28,14 +28,12 @@ public class ChillingPlant {
 		
 	}
 	
-	
 	public ChillingPlant(String name, Double latitude, Double longitude) {
 		super();
 		this.name = name;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-
 
 	public Long getId() {
 		return id;

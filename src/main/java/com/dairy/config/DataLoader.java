@@ -47,6 +47,16 @@ public class DataLoader implements CommandLineRunner {
         this.chillingPlantRepository = chillingPlantRepository;
     }
 
+    String generatePhoneNumber() {
+    	int firstDigit=6+random.nextInt(4);
+    	StringBuilder sb=new StringBuilder();
+    	sb.append(firstDigit);
+    	for(int i=0;i<9;i++) {
+    		sb.append(random.nextInt(10));
+    	}
+    	return sb.toString();
+    }
+    
     @Override
     public void run(String... args) throws Exception {
 
@@ -99,6 +109,8 @@ public class DataLoader implements CommandLineRunner {
         int totalFarmers = 1400;
         int farmerCount = 0;
         int pointIndex = 0;
+        
+        
 
         while (farmerCount < totalFarmers) {
             CollectionPoint point = allPoints.get(pointIndex % allPoints.size());
@@ -111,6 +123,7 @@ public class DataLoader implements CommandLineRunner {
                 String name = "Farmer-" + farmerCount;
                 double avgMilk = 5 + random.nextDouble() * 15; // 5 to 20 liters
                 Farmer farmer = new Farmer(name, village, point, avgMilk);
+                farmer.setPhoneNumber(generatePhoneNumber());
                 farmerRepository.save(farmer);
             }
 
