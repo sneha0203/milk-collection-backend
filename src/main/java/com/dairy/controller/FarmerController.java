@@ -29,7 +29,7 @@ public class FarmerController {
         this.collectionPointRepository = collectionPointRepository;
     }
 
-    // POST /farmers
+    // Creates a new farmer linked to an existing village and collection point.
     @PostMapping("/farmers")
     public Farmer createFarmer(@Valid @RequestBody CreateFarmerRequest request) {
         Village village = villageRepository.findById(request.getVillageId())

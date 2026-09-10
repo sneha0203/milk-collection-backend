@@ -12,6 +12,26 @@ zero visibility into where a tanker currently is.
 - MySQL
 - Maven
 
+# Prerequisites
+
+Before running this project, make sure you have:
+
+1. **Java 17** (JDK) installed
+     Check with: 'java -version'
+     Download: https://adoptium.net (Eclipse Temurin/SpringToolsForEclipse/IntelliJ IDE)
+
+2. **Maven** installed
+     Check with: 'mvn -version'
+     Download: https://maven.apache.org/download.cgi
+     If using an IDE like Spring Tool Suite or IntelliJ, Maven usually comes bundled — a separate install may not be needed
+
+3. **MySQL Server** installed and running
+     Download: https://dev.mysql.com/downloads/mysql/
+     During installation, set a root password and remember it
+     MySQL Workbench (a GUI tool) is optional but recommended for inspecting
+     the database visually — bundled with the MySQL installer, or download
+     separately: https://dev.mysql.com/downloads/workbench/
+
 # How to Run
 
 1. Create the database (tables are auto-created by Hibernate, you only need the empty schema):

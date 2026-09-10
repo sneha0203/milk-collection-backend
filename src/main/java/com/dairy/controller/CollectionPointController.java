@@ -24,7 +24,7 @@ public class CollectionPointController {
         this.villageRepository = villageRepository;
     }
 
-    // POST /collection-points
+    // Creates a new collection point within an existing village.
     @PostMapping("/collection-points")
     public CollectionPoint createCollectionPoint(@Valid @RequestBody CreateCollectionPointRequest request) {
         Village village = villageRepository.findById(request.getVillageId())

@@ -18,8 +18,9 @@ public class RouteController {
     public RouteController(RouteGeneratorService routeGeneratorService) {
         this.routeGeneratorService = routeGeneratorService;
     }
-
-    
+ 
+    /** Generates route templates for every tanker for the given run type (MORNING/EVENING) 
+    and returns the list of created Route objects**/
     @PostMapping("/routes/generate")
     public List<Route> generateRoutes(@RequestParam RunType runType) {
         return routeGeneratorService.generateRoutes(runType);
