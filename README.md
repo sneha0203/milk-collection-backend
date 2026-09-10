@@ -12,7 +12,7 @@ zero visibility into where a tanker currently is.
 - MySQL
 - Maven
 
-# Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have:
 
